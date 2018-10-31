@@ -1,6 +1,6 @@
 # RIOTGamesFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+This project is the front-end part of the R-IOT Games challenge and is made by Raptor
 
 ## Development server
 
