@@ -1,4 +1,17 @@
-<h1>Welcome to the waterwell!</h1>
-
+<section class="home">
+  <article *ngIf="latestAvailable" class="last">
+    <h1>{{latestMeasurement[0].waterLeft.toFixed(2)}}% Filled</h1>
+    <div class="detailsSection">
+      <div class="details" *ngIf="details">
+        <h2><i class="far fa-clock"></i>{{makeTime()}}</h2>
+        <h2><i class="fas fa-thermometer-empty"></i>{{latestMeasurement[0].airTemperature}}°C</h2>
+        <button (click)="toggleDetails()">Hide details</button>
+      </div>
+      <div *ngIf="!details">
+        <button (click)="toggleDetails()">Show details</button>
+      </div>
+    </div>
+  </article>
+</section>
 
 <app-graphs></app-graphs>

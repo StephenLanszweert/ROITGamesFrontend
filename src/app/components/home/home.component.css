@@ -1,0 +1,70 @@
+.home {
+  background-image: url("../../../assets/images/clean-drop-of-water-liquid-40784.jpg");
+  opacity: 0.9;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.last {
+  text-align: center;
+  width: 50%;
+  align-content: center;
+  padding: 5%;
+  min-height: 25vh;
+  min-width: 15vw;
+  background-color: rgba(128, 127, 127, 0.656);
+  color: white;
+}
+
+.last>h1 {
+  font-size: 3em;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.detailsSection {
+  margin-top: 15%;
+}
+
+.detailsSection>div>button {
+  width: 100%;
+  border: none;
+  background-color: #000;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.details>h2 {
+  width: 50%;
+  font-size: 1.5em;
+}
+
+.details>h2>i {
+  margin-right: 2%;
+}
+
+.details>button {
+  margin-top: 10%;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .last {
+    width: 100%;
+  }
+}
