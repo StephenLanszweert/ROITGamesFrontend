@@ -13,6 +13,7 @@ export class GraphsComponent implements OnInit {
   ctx: any;
 
   ngOnInit() {
+    console.log(new Date("2018-10-17").toISOString());
     this.canvas = document.getElementById("myChart");
     this.ctx = this.canvas.getContext("2d");
     let myChart = new Chart(this.ctx, {
@@ -34,8 +35,16 @@ export class GraphsComponent implements OnInit {
       },
       options: {
         responsive: true,
-        display: true
+        display: true,
+        title: {
+          display: true,
+          text: "Water Level",
+          fontSize: 18,
+          fontFamily: "Lato"
+        }
       }
     });
   }
+
+  makeGraph(idElem, type, dataSet) {}
 }

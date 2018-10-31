@@ -1,11 +1,38 @@
-.graphs {
+.sectionGraphs {
+  background-color: rgba(20, 162, 228, 0.534);
+  padding: 5%;
+}
+
+.sectionGraphs>h1 {
+  color: white;
+  font-size: 5em;
+  letter-spacing: 7px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+.theGraphs {
   width: 100%;
+  background-image: url("../../../assets/images/blue-blur-color-932638.jpg");
+  opacity: 0.9;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
+.graphs {
   display: flex;
   flex-wrap: wrap;
 }
 
 .graphs>div {
-  width: 100%;
+  width: 96%;
+  background-color: rgba(228, 222, 222, 0.726);
+  padding: 2%;
 }
 
 
