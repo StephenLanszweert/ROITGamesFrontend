@@ -1,0 +1,16 @@
+.graphs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.graphs>div {
+  width: 100%;
+}
+
+
+@media only screen and (min-width: 600px) {
+  .graphs>div {
+    width: 50%
+  }
+}
