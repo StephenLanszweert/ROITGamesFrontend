@@ -5,6 +5,8 @@
       <div class="details" *ngIf="details">
         <h2><i class="far fa-clock"></i>{{makeTime()}}</h2>
         <h2><i class="fas fa-thermometer-empty"></i>{{latestMeasurement[0].airTemperature}}°C</h2>
+        <h2><i class="fas fa-tint"></i>{{latestMeasurement[0].airHumidity}}</h2>
+        <h2><i class="fas fa-tint"></i>{{latestMeasurement[0].airPressure}}</h2>
         <button (click)="toggleDetails()">Hide details</button>
       </div>
       <div *ngIf="!details">
