@@ -1,4 +1,6 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Graph } from "./../../classes/graph";
+import { WaterwellService } from "./../../services/waterwell.service";
+import { Component, OnInit } from "@angular/core";
 import { Chart } from "chart.js";
 
 @Component({
@@ -7,44 +9,165 @@ import { Chart } from "chart.js";
   styleUrls: ["./graphs.component.css"]
 })
 export class GraphsComponent implements OnInit {
-  constructor() {}
+  constructor(private waterWellService: WaterwellService) {}
 
   canvas: any;
   ctx: any;
+  graphs: any;
+  allPoints: any;
 
   ngOnInit() {
-    console.log(new Date("2018-10-17").toISOString());
-    this.canvas = document.getElementById("myChart");
+    // TODO: make class for the Graph
+    this.graphs = [];
+    this.waterWellService.getAll().subscribe(result => {
+      this.allPoints = result;
+      this.graphs.push(this.makeGraph("waterLeft", "line", this.allPoints));
+      this.graphs.push(
+        this.makeGraph("waterTemperature", "line", this.allPoints)
+      );
+      this.graphs.push(
+        this.makeGraph("airTemperature", "line", this.allPoints)
+      );
+      console.log(this.graphs);
+      console.log(this.graphs[0].data);
+    });
+    this.addSelectForTime();
+  }
+
+  addSelectForTime() {
+    let elem = document.getElementsByTagName("li");
+    for (let i = 0; i < elem.length; i++) {
+      elem[i].addEventListener("click", e => this.selectAnotherTime(e));
+    }
+  }
+
+  selectAnotherTime(e) {
+    let timeSpan = e.target.getAttribute("data-time");
+    let type = e.target.parentNode.getAttribute("data-type");
+    this.updateGraph(type, timeSpan);
+  }
+
+  updateGraph(typeGraph, timeSpan) {
+    let date = new Date();
+    let start = new Date(date);
+    let end = date;
+    switch (timeSpan) {
+      case "1y":
+        end.setFullYear(start.getFullYear() - 1);
+        break;
+      case "all":
+        // set start to nothing => all must be asked
+        end = null;
+        break;
+      case "3m":
+        end.setMonth(start.getMonth() - 3);
+        break;
+      case "1m":
+        end.setMonth(start.getMonth() - 1);
+        break;
+      case "1w":
+        end = this.getLastWeek();
+        break;
+      case "24h":
+        console.log(start.getHours() - 12);
+        break;
+      default:
+        // do nothing
+        break;
+    }
+    console.log(typeGraph);
+    this.waterWellService
+      .getDataBetweenPeriods(start, end)
+      .subscribe(result => {
+        let labels = [];
+        result.forEach(element => {
+          labels.push(this.makeTime(element.timestamp));
+        });
+        this.updatePoints(typeGraph, result, labels);
+      });
+  }
+
+  updatePoints(id, result, labels) {
+    for (let i = 0; i < this.graphs.length; i++) {
+      if (this.graphs[i].canvas.getAttribute("id") == id) {
+        console.log("gevonden");
+        this.removeData(this.graphs[i]);
+        this.addData(this.graphs[i], labels, result);
+        console.log(this.graphs[i]);
+      }
+    }
+  }
+  addData(chart, label, data) {
+    chart.data.datasets.forEach(dataset => {
+      dataset.data = data;
+    });
+    chart.data.labels = label;
+
+    chart.update();
+    console.log(chart.data);
+  }
+  removeData(chart) {
+    chart.data.labels = [];
+    chart.data.datasets.forEach(dataset => {
+      dataset.data = [];
+    });
+    chart.update();
+  }
+
+  makeGraph(idElem, type, dataSet) {
+    let points = [];
+    let labels = [];
+    let myChart = null;
+    dataSet.forEach(element => {
+      labels.push(this.makeTime(element.timestamp));
+      points.push(element[idElem]);
+    });
+    this.canvas = document.getElementById(idElem);
     this.ctx = this.canvas.getContext("2d");
-    let myChart = new Chart(this.ctx, {
-      type: "bar",
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    return (myChart = new Chart(this.ctx, {
+      type: "line",
       data: {
-        labels: ["New", "In Progress", "On Hold"],
+        labels: labels,
         datasets: [
           {
-            label: "# of Votes",
-            data: [1, 2, 3],
-            backgroundColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)"
-            ],
-            borderWidth: 1
+            label: idElem,
+            data: points,
+            backgroundColor: ["rgb(6, 255, 234)"],
+            borderWidth: 0.2
           }
         ]
       },
       options: {
         responsive: true,
         display: true,
-        title: {
-          display: true,
-          text: "Water Level",
-          fontSize: 18,
-          fontFamily: "Lato"
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "test"
+              }
+            }
+          ]
         }
       }
-    });
+    }));
   }
 
-  makeGraph(idElem, type, dataSet) {}
+  makeTime(givenDate) {
+    let date = new Date(givenDate);
+    return (
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+    );
+  }
+  getLastWeek() {
+    var today = new Date();
+    var lastWeek = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() - 7
+    );
+    return lastWeek;
+  }
 }

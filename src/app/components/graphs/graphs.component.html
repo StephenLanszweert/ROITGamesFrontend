@@ -5,7 +5,41 @@
 <section class="theGraphs">
   <article class="graphs">
     <div>
-      <canvas id="myChart"></canvas>
+      <h2>Water Level</h2>
+      <ol data-type="waterLeft">
+        <li data-time="12h">12H</li>
+        <li data-time="24h">24H</li>
+        <li data-time="1w">1W</li>
+        <li data-time="1m">1M</li>
+        <li data-time="3m" class="active">3M</li>
+        <li data-time="1y">1Y</li>
+        <li data-time="all">ALL</li>
+      </ol>
+      <canvas id="waterLeft"></canvas>
+    </div>
+    <div>
+      <h2>Water Temperature</h2>
+      <ol data-type="waterTemperature">
+        <li data-time="12h">12H</li>
+        <li data-time="24h">24H</li>
+        <li data-time="1w">1W</li>
+        <li data-time="1m">1M</li>
+        <li data-time="3m" class="active">3M</li>
+        <li data-time="1y">1Y</li>
+        <li data-time="all">ALL</li>
+      </ol><canvas id="waterTemperature"></canvas>
+    </div>
+    <div>
+      <h2>Air Temperature</h2>
+      <ol data-type="airTemperature">
+        <li data-time="12h">12H</li>
+        <li data-time="24h">24H</li>
+        <li data-time="1w">1W</li>
+        <li data-time="1m">1M</li>
+        <li data-time="3m" class="active">3M</li>
+        <li data-time="1y">1Y</li>
+        <li data-time="all">ALL</li>
+      </ol><canvas id="airTemperature"></canvas>
     </div>
   </article>
 </section>

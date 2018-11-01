@@ -30,14 +30,48 @@
 }
 
 .graphs>div {
-  width: 96%;
-  background-color: rgba(228, 222, 222, 0.726);
+  width: 92%;
+  background-color: rgba(255, 254, 254, 0.936);
   padding: 2%;
+  margin: 2%;
+  text-align: center;
+}
+
+.graphs>div>h2 {
+  font-size: 2em;
+  letter-spacing: 3px;
+  margin-bottom: 2%;
+  font-weight: bold;
+}
+
+.graphs>div>ol {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  cursor: pointer;
+}
+
+.graphs>div>ol>li {
+  display: inline;
+  border-right: 1px solid rgb(0, 0, 0);
+  margin: 2%;
+  padding-right: 5%;
+  padding: 1%;
+}
+
+.graphs>div>ol>li:last-child {
+  border-right: none;
+}
+
+.graphs>div>ol>li:hover,
+.active {
+  background-color: black;
+  color: white;
 }
 
 
 @media only screen and (min-width: 600px) {
   .graphs>div {
-    width: 50%
+    /*     width: 40%
+ */
   }
 }
