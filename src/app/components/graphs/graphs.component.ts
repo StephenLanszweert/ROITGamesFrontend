@@ -80,6 +80,7 @@ export class GraphsComponent implements OnInit {
       .getDataBetweenPeriods(start, end)
       .subscribe(result => {
         let labels = [];
+        console.log(result.length);
         result.forEach(element => {
           labels.push(this.makeTime(element.timestamp));
         });
