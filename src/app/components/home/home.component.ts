@@ -1,34 +1,35 @@
-import { Component, OnInit } from "@angular/core";
-import { WaterwellService } from "./../../services/waterwell.service";
+import {Component, OnInit} from '@angular/core';
+import {WaterwellService} from './../../services/waterwell.service';
+import {Measurement} from '../../models/measurement';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private latestMeasurement: object;
-  private latestAvailable: boolean;
-  private details: boolean;
-  constructor(private waterwellService: WaterwellService) {}
+    private latestMeasurement: Measurement;
+    private latestAvailable: boolean;
+    private details: boolean;
 
-  ngOnInit() {
-    this.latestAvailable = false;
-    this.details = true;
-    this.waterwellService.getLastMeasurement().subscribe(res => {
-      this.latestMeasurement = res;
-      this.latestAvailable = true;
-    });
-  }
+    constructor(private waterwellService: WaterwellService) {
+    }
 
-  makeTime() {
-    let date = new Date(this.latestMeasurement[0].timestamp);
-    let day = date.getDay();
-    let month = date.getMonth();
-    return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-  }
+    ngOnInit() {
+        this.latestAvailable = false;
+        this.details = true;
+        this.waterwellService.getLastMeasurement().subscribe(measurement => {
+            this.latestMeasurement = measurement;
+            this.latestAvailable = true;
+        });
+    }
 
-  toggleDetails() {
-    this.details = !this.details;
-  }
+    makeTime() {
+        const date = new Date(this.latestMeasurement.timestamp);
+        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+    }
+
+    toggleDetails() {
+        this.details = !this.details;
+    }
 }
