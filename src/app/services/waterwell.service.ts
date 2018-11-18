@@ -25,7 +25,7 @@ export class WaterwellService {
 
     getDataBetweenPeriods(start: Date, end: Date): Observable<Measurement[]> {
         let timePartUrl = '';
-        console.log(start);
+
         if (end == null) {
             // TODO: change date to init date(first recording)
             const initDate = new Date(2018, 6, 21);
@@ -33,7 +33,7 @@ export class WaterwellService {
         } else {
             timePartUrl = `?end=${end.toISOString()}&start=${start.toISOString()}`;
         }
-        console.log(timePartUrl);
+
         return this.http.get(this.url + timePartUrl).pipe(map(res => res as Measurement[]));
     }
 }
