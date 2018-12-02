@@ -1,3 +1,10 @@
-<p>
-  usage-summary works!
-</p>
+<section *ngIf="usageSummary">
+    <h1>What you used this week</h1>
+    <div class="usageCardWrapper">
+        <app-usage-card [valueName]="'liters'" [value]="usageSummary.litersUsed" [icon]="'https://bit.ly/2Q9RrWg'"></app-usage-card>
+        <app-usage-card [valueName]="'buckets'" [value]="usageSummary.bucketsUsed" [icon]="'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIuMDMxIDBjLTUuMDY0IDAtOS4wMzEgMy4wNzUtOS4wMzEgN3YxMy4yNTNjMCAxLjk5NCAzIDMuNzQ3IDkuMDI5IDMuNzQ3IDUuOTQgMCA4Ljk3MS0xLjc0NSA4Ljk3MS0zLjc0N3YtMTMuMjUzYzAtMy45MjUtMy45MzktNy04Ljk2OS03em0wIDFjNC4yOTUgMCA3LjY4NiAyLjQzNyA3Ljk0MyA1LjYxMi0xLjUwMS0uOTU4LTQuNTA1LTEuNjEyLTcuOTc0LTEuNjEyLTMuNDY3IDAtNi40NzIuNjU0LTcuOTc1IDEuNjEyLjI2MS0zLjE3NSAzLjY3OC01LjYxMiA4LjAwNi01LjYxMnptLjA0NyA4Ljc4MWMtMi4wNTMgMC02LjQ4OS0uMzktNi40ODktMS4zOTEgMC0xLjAxIDMuOTg2LTEuMzkgNi40ODktMS4zOSAyLjU2OCAwIDYuNTEyLjM5IDYuNTEyIDEuMzkxIDAgMS4wMS00LjQxIDEuMzktNi41MTIgMS4zOXptLS4wNDkgMTIuMjE5Yy01LjM5NyAwLTYuOTY2LTEuNDgxLTcuMDI5LTEuNzQ3di05LjUwOGMxLjU0OS43ODcgNC41IDEuMjM0IDYuOTc5IDEuMjM0IDIuMzk2IDAgNS40NzMtLjQ0OCA3LjAyMS0xLjIzM2wuMDAyIDkuNWMtLjA2Ni4yNzMtMS42MjcgMS43NTQtNi45NzMgMS43NTR6Ii8+PC9zdmc+'"></app-usage-card>
+        <app-usage-card [valueName]="'baths'" [value]="usageSummary.bathsUsed" [icon]="'https://upload.wikimedia.org/wikipedia/commons/f/fe/Font_Awesome_5_solid_bath.svg'"></app-usage-card>
+        <app-usage-card [valueName]="'showers'" [value]="usageSummary.showersUsed" [icon]="'https://upload.wikimedia.org/wikipedia/commons/4/41/Shower_icon_-_Noun_Project_4336.svg'"></app-usage-card>
+        <app-usage-card [valueName]="'cans'" [value]="usageSummary.cansUsed" [icon]="'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMi4xODUgNGwyLjExMy00IDEuMzU5LjYzNC0xLjgxNyAzLjM2Nmg0LjE5OWMwIC45MjIgMS4wOTIgMS42MTggMS45NjEgMS42MTh2MS4zODJoLTFsLTIgMTdoLTEwbC0yLjAyLTE3aC0uOTh2LTEuMzgyYy44NyAwIDItLjY5NyAyLTEuNjE4aDYuMTg1em0tNS4xODUgM2wxLjczNSAxNWg2LjUzbDEuNzM1LTE1aC0xMHptMy43NSAxMC41Yy40MTQgMCAuNzUuMzM2Ljc1Ljc1cy0uMzM2Ljc1LS43NS43NS0uNzUtLjMzNi0uNzUtLjc1LjMzNi0uNzUuNzUtLjc1em0yLjcyNy0yLjVjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xem0tMi45NzctM2MuODI4IDAgMS41LjY3MiAxLjUgMS41cy0uNjcyIDEuNS0xLjUgMS41LTEuNS0uNjcyLTEuNS0xLjUuNjcyLTEuNSAxLjUtMS41eiIvPjwvc3ZnPg=='"></app-usage-card>
+    </div>
+</section>

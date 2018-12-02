@@ -1,0 +1,19 @@
+h1 {
+  color: white;
+  font-size: 4em;
+  letter-spacing: 7px;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(20, 162, 228, 0.534);
+  padding: 5%;
+}
+
+.usageCardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+app-usage-card {
+  min-width: 50%;
+  display: inline-block;
+}

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Measurement} from '../models/measurement';
+import { UsageSummary } from '../models/usageSummary';
 
 @Injectable()
 export class WaterwellService {
@@ -35,5 +36,19 @@ export class WaterwellService {
         }
 
         return this.http.get(this.url + timePartUrl).pipe(map(res => res as Measurement[]));
+    }
+
+    getUsageSummaryThisWeek(): Observable<UsageSummary>{
+        function getMonday(d) {
+            d = new Date(d);
+            var day = d.getDay(),
+                diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+            return new Date(d.setDate(diff));
+          }
+
+        const now = new Date().toISOString();
+        const beginningOfTheWeek = getMonday(new Date()).toISOString();
+
+        return this.http.get(`${this.url}/summarized?end=${now}&start=${beginningOfTheWeek}`).pipe(map(res => res as UsageSummary));
     }
 }
