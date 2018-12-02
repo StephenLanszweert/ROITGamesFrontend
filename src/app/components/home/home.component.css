@@ -22,12 +22,17 @@
   min-width: 15%;
   background-color: rgba(128, 127, 127, 0.656);
   color: white;
+  border-radius: 2%;
 }
 
 .last>h1 {
-  font-size: 3em;
+  font-size: 10em;
   letter-spacing: 5px;
   font-weight: bold;
+}
+
+.last>p {
+  font-size: 2em;
 }
 
 .detailsSection {

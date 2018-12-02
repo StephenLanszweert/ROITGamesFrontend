@@ -24,12 +24,6 @@ export class GraphsComponent implements OnInit {
         this.waterWellService.getAll().subscribe(result => {
             this.allPoints = result;
             this.graphs.push(this.makeGraph('waterLeft', 'line', this.allPoints));
-            this.graphs.push(
-                this.makeGraph('waterTemperature', 'line', this.allPoints)
-            );
-            this.graphs.push(
-                this.makeGraph('airTemperature', 'line', this.allPoints)
-            );
         });
         this.addSelectForTime();
     }

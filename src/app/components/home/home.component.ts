@@ -8,16 +8,14 @@ import {Measurement} from '../../models/measurement';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    private latestMeasurement: Measurement;
-    private latestAvailable: boolean;
-    private details: boolean;
+    public latestMeasurement: Measurement;
+    public latestAvailable: boolean;
 
     constructor(private waterwellService: WaterwellService) {
     }
 
     ngOnInit() {
         this.latestAvailable = false;
-        this.details = true;
         this.waterwellService.getLastMeasurement().subscribe(measurement => {
             this.latestMeasurement = measurement;
             this.latestAvailable = true;
@@ -27,9 +25,5 @@ export class HomeComponent implements OnInit {
     makeTime() {
         const date = new Date(this.latestMeasurement.timestamp);
         return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-    }
-
-    toggleDetails() {
-        this.details = !this.details;
     }
 }

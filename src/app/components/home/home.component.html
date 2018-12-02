@@ -1,18 +1,7 @@
 <section class="home">
   <article *ngIf="latestAvailable" class="last">
-    <h1>{{latestMeasurement.waterLeft.toFixed(2)}}% Filled</h1>
-    <div class="detailsSection">
-      <div class="details" *ngIf="details">
-        <h2><i class="far fa-clock"></i>{{makeTime()}}</h2>
-        <h2><i class="fas fa-thermometer-empty"></i>{{latestMeasurement.airTemperature}}°C</h2>
-        <h2><i class="fas fa-tint"></i>{{latestMeasurement.airHumidity}}</h2>
-        <h2><i class="fas fa-tint"></i>{{latestMeasurement.airPressure}}</h2>
-        <button (click)="toggleDetails()">Hide details</button>
-      </div>
-      <div *ngIf="!details">
-        <button (click)="toggleDetails()">Show details</button>
-      </div>
-    </div>
+    <h1>{{latestMeasurement.waterLeft.toFixed(2)}}%</h1>
+    <p>Left</p>
   </article>
 </section>
 
