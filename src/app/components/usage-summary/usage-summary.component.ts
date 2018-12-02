@@ -8,7 +8,7 @@ import { WaterwellService } from "../../services/waterwell.service";
   styleUrls: ["./usage-summary.component.css"]
 })
 export class UsageSummaryComponent implements OnInit {
-  public usageSummary: UsageSummary = undefined;
+  public usageSummary: UsageSummary;
 
   constructor(private waterwellService: WaterwellService) {}
 

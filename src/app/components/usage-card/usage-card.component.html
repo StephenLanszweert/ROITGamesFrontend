@@ -1,4 +1,4 @@
 <div>
   <h2 [ngStyle]="{ 'background-image': 'url(' + icon + ')'}">Amount of {{valueName}}</h2>
-  <p>{{value}}</p>
+  <p>{{value | number : '1.2-2'}}</p>
 </div>
