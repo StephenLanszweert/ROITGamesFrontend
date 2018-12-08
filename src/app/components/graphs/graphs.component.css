@@ -15,12 +15,6 @@
 
 .theGraphs {
   width: 100%;
-  background-image: url("../../../assets/images/blue-blur-color-932638.jpg");
-  opacity: 0.9;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   min-height: 100%;
 }
 
