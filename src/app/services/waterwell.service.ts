@@ -45,9 +45,16 @@ export class WaterwellService {
   getUsageSummaryThisWeek(): Observable<UsageSummary> {
     function getMonday(d) {
       d = new Date(d);
-      var day = d.getDay(),
-        diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-      return new Date(d.setDate(diff));
+      const day = d.getDay(),
+        diff = d.getDate() - day + (day == 1 ? -6 : 1);
+        
+      const startOfWeek = new Date(d.setDate(diff));
+      startOfWeek.setHours(0);
+      startOfWeek.setMinutes(0);
+      startOfWeek.setSeconds(0);
+      startOfWeek.setMilliseconds(0);
+
+      return startOfWeek;
     }
 
     const now = new Date().toISOString();
