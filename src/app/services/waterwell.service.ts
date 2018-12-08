@@ -10,7 +10,7 @@ export class WaterwellService {
   private url: string;
 
   constructor(private http: HttpClient) {
-    this.url = "http://hectorfuzzy.duckdns.org:6001/api/waterwell";
+    this.url = "https://hectorfuzzy.duckdns.org/riot-api/api/waterwell";
   }
 
   getLastMeasurement(): Observable<Measurement> {
