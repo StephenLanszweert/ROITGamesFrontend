@@ -1,4 +1,3 @@
-import { Graph } from "./../../classes/graph";
 import { WaterwellService } from "./../../services/waterwell.service";
 import { Component, OnInit } from "@angular/core";
 import { Chart } from "chart.js";
@@ -16,12 +15,15 @@ export class GraphsComponent implements OnInit {
   ctx: any;
   graphs: any;
   allPoints: any;
+  dataLoaded: boolean;
 
   ngOnInit() {
     this.graphs = [];
+    this.dataLoaded = false;
     this.waterWellService.getAll().subscribe(result => {
       this.allPoints = result;
       this.graphs.push(this.makeGraph("waterLeft", "line", this.allPoints));
+      this.dataLoaded = true;
     });
     this.addSelectForTime();
     this.changeActiveState();
@@ -50,6 +52,7 @@ export class GraphsComponent implements OnInit {
   selectAnotherTime(e) {
     const timeSpan = e.target.getAttribute("data-time");
     const type = e.target.parentNode.getAttribute("data-type");
+    this.dataLoaded = false;
     this.updateGraph(type, timeSpan);
   }
 
@@ -93,6 +96,7 @@ export class GraphsComponent implements OnInit {
           labels.push(this.makeTime(element.timestamp));
         });
 
+        this.dataLoaded = true;
         this.updatePoints(typeGraph, result, labels);
       });
   }

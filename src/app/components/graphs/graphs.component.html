@@ -15,7 +15,11 @@
         <li data-time="1y">1Y</li>
         <li data-time="all">ALL</li>
       </ol>
-      <canvas id="waterLeft"></canvas>
+      <div *ngIf="!dataLoaded" class="loader"></div>
+      <div [hidden]="!dataLoaded">
+        <canvas id="waterLeft"></canvas></div>
+
     </div>
+
   </article>
 </section>
