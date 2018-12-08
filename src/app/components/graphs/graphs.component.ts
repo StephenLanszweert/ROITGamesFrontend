@@ -18,7 +18,6 @@ export class GraphsComponent implements OnInit {
   allPoints: any;
 
   ngOnInit() {
-    // TODO: make class for the Graph
     this.graphs = [];
     this.waterWellService.getAll().subscribe(result => {
       this.allPoints = result;
@@ -30,7 +29,6 @@ export class GraphsComponent implements OnInit {
 
   changeActiveState() {
     let lis: any = document.querySelectorAll("li");
-    console.log("lis", lis);
     lis.forEach(li => {
       li.addEventListener("click", e => {
         lis.forEach(li => {
