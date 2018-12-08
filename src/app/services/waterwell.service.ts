@@ -11,7 +11,7 @@ export class WaterwellService {
 
     constructor(private http: HttpClient) {
         // TODO: set back to 192.168.0.209 for testing in network
-        this.url = 'http://localhost:8000/api/waterwell';
+        this.url = 'http://hectorfuzzy.duckdns.org:6001/api/waterwell';
     }
 
     getLastMeasurement(): Observable<Measurement>  {
@@ -49,6 +49,8 @@ export class WaterwellService {
         const now = new Date().toISOString();
         const beginningOfTheWeek = getMonday(new Date()).toISOString();
 
-        return this.http.get(`${this.url}/summarized?end=${now}&start=${beginningOfTheWeek}`).pipe(map(res => res as UsageSummary));
+        console.log(`${this.url}/summarized?end=${now}&start=${beginningOfTheWeek}`);
+
+        return this.http.get(`${this.url}/summarized?start=${now}&end=${beginningOfTheWeek}`).pipe(map(res => res as UsageSummary));
     }
 }
