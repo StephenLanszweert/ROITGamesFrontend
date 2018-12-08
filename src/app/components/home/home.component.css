@@ -71,6 +71,10 @@
 
 @media only screen and (max-width: 600px) {
   .last {
-    width: 80%;
+    width: 100%;
+  }
+
+  .last>h1 {
+    font-size: 5em;
   }
 }
