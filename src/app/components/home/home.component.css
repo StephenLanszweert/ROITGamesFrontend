@@ -1,14 +1,11 @@
 .home {
   background-image: url("../../../assets/images/clean-drop-of-water-liquid-40784.jpg");
   opacity: 0.9;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 app-waving-water {
   position: relative;
+  min-height: 100vh;
 }
 
 .last {
@@ -20,9 +17,8 @@ app-waving-water {
   color: white;
   border-radius: 2%;
   position: absolute;
-  top: 50%; 
-  left: 50%; 
-
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
