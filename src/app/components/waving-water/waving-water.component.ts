@@ -86,14 +86,14 @@ export class WavingWaterComponent implements OnInit {
   renderWaves() {
     var i;
     this.ctx.beginPath();
-    this.ctx.moveTo(0, this.canvas.height);
+    this.ctx.moveTo(0, this.canvasHeight);
     for (i = 0; i < this.MAX_SPRINGS; i++) {
       this.ctx.lineTo(
-        i * (this.canvas.width / this.MAX_SPRINGS),
-        this.canvas.height - this.waterHeight + this.springs[i].p
+        i * (this.canvasWidth / this.MAX_SPRINGS),
+        this.canvasHeight - this.waterHeight + this.springs[i].p
       );
     }
-    this.ctx.lineTo(this.canvas.width, this.canvas.height);
+    this.ctx.lineTo(this.canvasWidth, this.canvasHeight);
     this.ctx.fillStyle = "rgb(130, 205, 241)";
     this.ctx.fill();
   }
@@ -102,7 +102,7 @@ export class WavingWaterComponent implements OnInit {
     if (Math.random() > 0.95)
       this.springs[Math.floor(Math.random() * this.MAX_SPRINGS)].p = 150;
 
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
     if (this.renderWavesEnabled) {
       this.updateSprings(0.2);
