@@ -1,28 +1,25 @@
 .home {
   background-image: url("../../../assets/images/clean-drop-of-water-liquid-40784.jpg");
   opacity: 0.9;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 
+app-waving-water {
+  position: relative;
+  min-height: 100vh;
+}
 
 .last {
   text-align: center;
-  width: 60%;
   align-content: center;
-  padding: 5%;
-  min-height: 25%;
+  padding: 2%;
   min-width: 15%;
-  background-color: rgba(128, 127, 127, 0.656);
+  background-color: rgba(128, 127, 127, 0.456);
   color: white;
   border-radius: 2%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .last>h1 {
@@ -72,6 +69,9 @@
 @media only screen and (max-width: 800px) {
   .last {
     width: 100%;
+    padding: 0;
+    padding-top: 2%;
+    padding-bottom: 2%;
   }
 
   .last>h1 {

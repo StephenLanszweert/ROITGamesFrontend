@@ -7,11 +7,12 @@ import {HomeComponent} from './components/home/home.component';
 import {GraphsComponent} from './components/graphs/graphs.component';
 import {UsageSummaryComponent} from './components/usage-summary/usage-summary.component';
 import {UsageCardComponent} from './components/usage-card/usage-card.component';
+import {WavingWaterComponent} from './components/waving-water/waving-water.component';
 
 import {WaterwellService} from './services/waterwell.service';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, GraphsComponent, UsageSummaryComponent, UsageCardComponent],
+    declarations: [AppComponent, HomeComponent, GraphsComponent, UsageSummaryComponent, UsageCardComponent, WavingWaterComponent],
     imports: [BrowserModule, HttpClientModule],
     providers: [WaterwellService],
     bootstrap: [AppComponent]

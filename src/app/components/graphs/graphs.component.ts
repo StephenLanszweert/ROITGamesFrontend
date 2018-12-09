@@ -20,7 +20,7 @@ export class GraphsComponent implements OnInit {
   ngOnInit() {
     this.graphs = [];
     this.dataLoaded = false;
-    this.waterWellService.getAll().subscribe(result => {
+    this.waterWellService.getDataBetweenPeriods(new Date(), dayjs().subtract(1, "week").toDate()).subscribe(result => {
       this.allPoints = result;
       this.graphs.push(this.makeGraph("waterLeft", "line", this.allPoints));
       this.dataLoaded = true;
@@ -114,8 +114,13 @@ export class GraphsComponent implements OnInit {
     const dataset = {
       label: type,
       data: data.map(entry => entry[type]),
-      backgroundColor: ["rgb(6, 255, 234)"],
-      borderWidth: 0.2,
+      backgroundColor: ["rgba(130,205,241,0.6)"],
+      pointHoverBorderColor: ["rgb(130,205,241)"],
+      borderColor: ["rgb(130,205,241)"],
+      pointBorderColor: ["rgb(130,205,241)"],
+      pointBackgroundColor: ["rgb(130,205,241)"],
+      fillColor: ["rgb(130,205,241)"],
+      borderWidth: 2.5,
       pointRadius: 0,
       pointHoverRadius: 1
     };
@@ -141,7 +146,7 @@ export class GraphsComponent implements OnInit {
     this.canvas = document.getElementById(idElem);
     this.ctx = this.canvas.getContext("2d");
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    return (myChart = new Chart(this.ctx, {
+    myChart = new Chart(this.ctx, {
       type: "line",
       data: {
         labels: labels,
@@ -149,12 +154,17 @@ export class GraphsComponent implements OnInit {
           {
             label: idElem,
             data: points,
-            backgroundColor: ["rgb(6, 255, 234)"],
-            borderWidth: 0.2,
+            backgroundColor: ["rgba(130,205,241,0.6)"],
+            pointHoverBorderColor: ["rgb(130,205,241)"],
+            borderColor: ["rgb(130,205,241)"],
+            pointBorderColor: ["rgb(130,205,241)"],
+            pointBackgroundColor: ["rgb(130,205,241)"],
+            fillColor: ["rgb(130,205,241)"],
+            borderWidth: 2.5,
             pointRadius: 0,
-            pointHoverRadius: 1
+            pointHoverRadius: 10
           }
-        ]
+        ],
       },
       options: {
         responsive: true,
@@ -164,13 +174,15 @@ export class GraphsComponent implements OnInit {
             {
               scaleLabel: {
                 display: true,
-                labelString: "test"
+                labelString: "Amount Of Water"
               }
             }
           ]
         }
       }
-    }));
+    });
+
+    return myChart;
   }
 
   makeTime(givenDate) {
