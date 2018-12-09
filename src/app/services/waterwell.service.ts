@@ -43,18 +43,18 @@ export class WaterwellService {
   }
 
   getUsageSummaryThisWeek(): Observable<UsageSummary> {
-    function getMonday(d) {
-      d = new Date(d);
-      const day = d.getDay(),
-        diff = d.getDate() - day + (day == 1 ? -6 : 1);
-        
-      const startOfWeek = new Date(d.setDate(diff));
-      startOfWeek.setHours(0);
-      startOfWeek.setMinutes(0);
-      startOfWeek.setSeconds(0);
-      startOfWeek.setMilliseconds(0);
+    function getMonday(date) {
+      const day = date.getDay() || 7;
+      if (day !== 1) date.setHours(-24 * (day - 1));
 
-      return startOfWeek;
+      date.setHours(0);
+      date.setMinutes(0);
+      date.setSeconds(0);
+      date.setMilliseconds(0);
+
+      console.log(date);
+
+      return date;
     }
 
     const now = new Date().toISOString();
